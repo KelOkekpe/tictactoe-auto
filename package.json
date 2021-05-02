@@ -1,0 +1,21 @@
+{
+  "name": "TicTacToeAuto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@wdio/cli": "^7.5.2",
+    "@wdio/jasmine-framework": "^7.5.2",
+    "@wdio/local-runner": "^7.5.2",
+    "@wdio/spec-reporter": "^7.5.2",
+    "@wdio/sync": "^7.5.2",
+    "chromedriver": "^90.0.0",
+    "wdio-chromedriver-service": "^7.0.0"
+  }
+}
