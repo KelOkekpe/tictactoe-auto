@@ -4,12 +4,17 @@ jasmine.DEFAULT_TIMEOUT_INTERVAL = 400000;
 
 
 describe('Tic Tac Toe Game', function () {
+    
 
     beforeEach(function () {
         require('expect-webdriverio').setOptions({ wait: 5000 })
         TicTacToePage.open(); 
-        TicTacToePage.switchToFrame();
+        switchToFrame(TicTacToePage.iFrame);
     });
+
+    function switchToFrame(iFrame) {
+        browser.switchToFrame(iFrame);
+    }
 
     function playerXWins() {
         return "Congratulations player X! You've won. Refresh to play again!"
@@ -42,13 +47,13 @@ describe('Tic Tac Toe Game', function () {
     //     expect(TicTacToePage.gameBoard).toBeExisting()
     // });
 
-    // it('alternates user symbols after every turn', function () {
-    //     var cellsPickedArray =  [0,3]
-    //     TicTacToePage.createBoard('3');
-    //     TicTacToePage.selectBoardCells(cellsPickedArray);
-    //     expect(TicTacToePage.boardCell(0)).toHaveText('X')
-    //     expect(TicTacToePage.boardCell(3)).toHaveText('O')      
-    // });
+    it('alternates user symbols after every turn', function () {
+        var cellsPickedArray =  [0,3]
+        TicTacToePage.createBoard('3');
+        TicTacToePage.selectBoardCells(cellsPickedArray);
+        expect(TicTacToePage.boardCell(0)).toHaveText('X')
+        expect(TicTacToePage.boardCell(3)).toHaveText('O')      
+    });
 
     it('declares tie game for games with no winner', function (){
         var cellsPickedArray = [0,1,4,8,5,3,2,6,7]

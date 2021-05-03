@@ -72,10 +72,8 @@ class TicTacToePage extends Page {
         return str.replace(/\s+$/, "");
     }
 
-    // tic tac toe game form is nested inside iframe
-    // we'll have to use switchToFrame to interact with elements within the iframe
-    switchToFrame () {
-        browser.switchToFrame($('#result'));
+    get iFrame () {
+        return $('#result')
     }
     
     // this creates a board, cellCount determines the amount of cells the board contains
