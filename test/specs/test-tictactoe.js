@@ -7,25 +7,24 @@ describe('Tic Tac Toe Game', function () {
     
     // change browser context to iFrame to allow interaction w/ elements within iFrame
     function switchToFrame(iFrame) {
-        browser.switchToFrame(iFrame);
+        browser.switchToFrame(iFrame)
     }
+        
     // this creates a board, cellCount determines the amount of cells the board contains
     function createBoard (cellCount) {
         TicTacToePage.inputNumber.setValue(cellCount);
-        TicTacToePage.btnSubmit.click();
+        TicTacToePage.btnSubmit.click()
     }
 
     // selects multiple board cells
     // remember: symbols alternate every subsequent index, (i.e, [0,1,2] =  X O X)
     function selectBoardCells (args) {
         for(var i=0; i<args.length; i++){
-         TicTacToePage.boardCells[args[i]].click();
-        }      
-     }
-
-    function playerXWins() {
-        return "Congratulations player X! You've won. Refresh to play again!"
+         TicTacToePage.boardCells[args[i]].click()
+        } 
     }
+
+    function playerXWins() {return "Congratulations player X! You've won. Refresh to play again!"}
 
     //generates a string of X's ; the number of X's are equal to the value paassed to this function
     //this function allows flexibility when testing game results for boards w/ differing sizes
@@ -33,20 +32,18 @@ describe('Tic Tac Toe Game', function () {
         var str = ""
         for(i=0; i<boardSize; i++ ){
             str2 = "X "
-            str = str.concat (str2)
-        }
-        return str.replace(/\s+$/, "");
-    }
+            str = str.concat (str2)}
+        return str.replace(/\s+$/, "") }
 
     // returns the total number of cells containing an X or O 
     function numberOfBoardEntries() {
-        var arr = []
-        for(i=0;i<$$('td').length;i++){
-            if($$('td')[i].getText() == "O" || $$('td')[i].getText() == "X"){
-                arr.push($$('td')[i].getText())
+        var count = 0
+        for(i=0; i<TicTacToePage.boardCells.length; i++){
+            if(TicTacToePage.boardCells[i].getText() == "O" || TicTacToePage.boardCells[i].getText() == "X"){
+                count+=1
             }
         }
-        return arr.length;
+        return count
     }
     
 
@@ -112,15 +109,15 @@ describe('Tic Tac Toe Game', function () {
         }
     });
 
-    // it('declares correct game winner by upper right corner to bottom left corner victory', function () {
-    //     var cellsPickedArray =  [2,1,4,3,6]
-    //     createBoard('3');
-    //     selectBoardCells(cellsPickedArray);
+    it('declares correct game winner by upper right corner to bottom left corner victory', function () {
+        var cellsPickedArray =  [2,1,4,3,6]
+        createBoard('3');
+        selectBoardCells(cellsPickedArray);
 
-    //     if(TicTacToePage.diagonalText(2,4,6) == dynamicRowOfXs(3)){
-    //         expect(TicTacToePage.endGameMessage).toHaveText(playerXWins())       
-    //     }
-    // });
+        if(TicTacToePage.diagonalText(2,4,6) == dynamicRowOfXs(3)){
+            expect(TicTacToePage.endGameMessage).toHaveText(playerXWins())       
+        }
+    });
     
 });
 
