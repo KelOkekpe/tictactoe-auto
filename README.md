@@ -5,7 +5,7 @@ automation for tictactoe application
 
 <h2> Tic-Tac-Toe automation video explainer </h2>
 
-https://www.loom.com/share/2da9fbc9b3ec42a5a4e76b5fd284647c
+https://www.loom.com/share/7658df76ce724683a5428b7929a2e717
 
 <h2> Tic-Tac-Toe Bugs document </h2>
 
