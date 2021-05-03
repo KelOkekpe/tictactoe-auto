@@ -29,6 +29,15 @@ class TicTacToePage extends Page {
      get endGameMessage () {
          return $('#endgame');
      }
+
+     get iFrame () {
+        return $('#result')
+    }
+
+      // returns a board cell by  index
+    boardCell (index) {
+        return $$('td')[index];
+    }
     
     // returns innerText of complete row of cells in string format, (i.e, X X X)
     rowText (index) {
@@ -71,29 +80,8 @@ class TicTacToePage extends Page {
         }
         return str.replace(/\s+$/, "");
     }
-
-    get iFrame () {
-        return $('#result')
-    }
-    
-    // this creates a board, cellCount determines the amount of cells the board contains
-    createBoard (cellCount) {
-        this.inputNumber.setValue(cellCount);
-        this.btnSubmit.click();
-    }
-    
-    // returns a board cell by  index
-    boardCell (index)  {
-        return $$('td')[index];
-    }
-
-    // selects multiple board cells
-    // remember: symbols alternate every subsequent index, (i.e, [0,1,2] =  X O X)
-    selectBoardCells (args) {
-       for(var i=0; i<args.length; i++){
-        $$('td')[args[i]].click();
-       }      
-    }
+   
+   
 }
 
 module.exports = new TicTacToePage();  
